@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Refactored Player & Weapon Sandbox</title>
+    <style>
+        body { margin: 0; background-color: #000; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        /* Removed external font. Using common system fonts as a fallback. */
+        canvas { 
+            border: 1px solid #555; 
+            image-rendering: pixelated; 
+            image-rendering: -moz-crisp-edges; 
+            image-rendering: crisp-edges; 
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="2560" height="1600"></canvas>
+
+    <!-- Scripts are now loaded in the correct order of dependency -->
+    <script src="tween.umd.js" defer></script>
+    <script src="state-machine.min.js" defer></script>
+    <script src="constants.js" defer></script>
+    <script src="utils.js" defer></script>
+    <script src="player.js" defer></script>      <!-- LOAD PLAYER DEFINITION FIRST -->
+    <script src="boss.js" defer></script>        <!-- LOAD BOSS DEFINITION -->
+    <script src="abilities.js" defer></script>  <!-- THEN LOAD SCRIPTS THAT USE BOSS/PLAYER -->
+    <script src="weapons.js" defer></script>    <!-- THEN LOAD SCRIPTS THAT USE BOSS/PLAYER -->
+    <script src="main.js" defer></script>       <!-- LOAD THE MAIN SCRIPT LAST -->
+</body>
+</html>
